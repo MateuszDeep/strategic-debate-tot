@@ -234,7 +234,7 @@ class IterativeDraftingMCTSTreeOfThoughts(IterativeDraftingTreeOfThoughts, Monte
         max_score = 0
         for child_index in root_node.children_ids:
             child_node = tree.nodes[child_index]
-            score = child_node.score / child_node.visits
+            score = child_node.score / child_node.visits if child_node.visits > 0 else 0
             if score > max_score:
                 max_score = score
                 best_node = child_node
